@@ -35,7 +35,7 @@ public class pro9 {
 			}
 			
 		}
-		
+		System.out.println();
 		sc.close();	
 	}
 
