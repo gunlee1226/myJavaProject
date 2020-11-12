@@ -5,18 +5,18 @@ public class GoodsApp {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Goods camera = new Goods("sony", 68000);
-		Goods notebook = new Goods("LGê·¸ë¨", 900000);
-		Goods cup = new Goods("ë¨¸ê·¸ì»µ", 20000);
-		
+		Goods notebook = new Goods("LG±×·¥", 900000);
+		Goods cup = new Goods("¸Ó±×ÄÅ", 20000);
+
 		camera.name = "samsung";
 		camera.price = 62000;
-		
-		
-				
-		System.out.println("ìƒí’ˆì´ë¦„ :" + camera.name + " \t" + camera.price );
-		System.out.println("ìƒí’ˆì´ë¦„ :" + notebook.name + "\t " + notebook.price);
-		System.out.println("ìƒí’ˆì´ë¦„ :" + cup.name + "\t " + cup.price);
-		
+
+
+
+		System.out.println("»óÇ°ÀÌ¸§ :" + camera.name + " \t" + camera.price );
+		System.out.println("»óÇ°ÀÌ¸§ :" + notebook.name + "\t " + notebook.price);
+		System.out.println("»óÇ°ÀÌ¸§ :" + cup.name + "\t " + cup.price);
+
 		camera.ShowInfo();
 		notebook.ShowInfo();
 		cup.ShowInfo();
@@ -24,6 +24,5 @@ public class GoodsApp {
 
 
 
-		
+
 }
-	

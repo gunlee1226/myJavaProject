@@ -9,6 +9,7 @@ public class drawMain {
 		
 		Random Rnum = new Random();
 		Point P = new Point();
+			
 		
 		P.X = Rnum.nextInt(45);
 		P.Y = Rnum.nextInt(45);
@@ -16,7 +17,7 @@ public class drawMain {
 		
 		P.draw();
 		System.out.println();
-		P.draw();
+		
 	}
 
 }
