@@ -16,7 +16,7 @@ public class Point {
 
 	public int getY() {
 		return Y;
-	}
+	} 
 
 	public void setY(int y) {
 		Y = y;
