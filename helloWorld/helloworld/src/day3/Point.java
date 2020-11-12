@@ -24,6 +24,6 @@ public class Point {
 	}
 
 	public void draw() {
-		System.out.print("Á¡ [X= " + this.X + ", Y="+ this.Y +"]À» ±×·ÈÀ¾´Ï´Ù.");
+		System.out.print("[X= " + this.X + ", Y="+ this.Y +"]");
 	}
 	}
