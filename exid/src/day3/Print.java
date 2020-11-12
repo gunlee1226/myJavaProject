@@ -17,15 +17,14 @@ public class Print {
 		System.out.println(d);
 
 	}
+	public void printer(String s) {
+
+		System.out.println(s);
+	}
 
 	public void printer(String s, String s1) {
 
 		System.out.println(s);
 		System.out.println(s1);
 	}
-
-	public void printer(String s1) {
-      
-      System.out.println(s1);
-   }
 }
