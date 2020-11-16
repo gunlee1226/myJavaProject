@@ -45,8 +45,10 @@ public class BookShop {
     
     	for(int i = 0; i < books.length; i++) {
 
-    		System.out.println( books[i].getBooknum() +") " + books[i].getBookname() + " "+ books[i].getWriter() +" / 대여가능여부 " + books[i].getStatecode() );  
+    		System.out.print( books[i].getBooknum() +") " + books[i].getBookname() + " "
+    		+ books[i].getWriter());
     		
+    		System.out.println((books[i].getStatecode() == 0 ) ?  "재고있음" :" 대여중");
     	}
     }
     

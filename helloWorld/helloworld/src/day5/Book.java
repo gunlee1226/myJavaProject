@@ -4,23 +4,23 @@ public class Book {
 		private int booknum;
 		private String bookname;
 		private String writer;
-		private String  statecode;
+		private int  statecode;
 		
 		public Book(int booknum, String bookname, String writer) {
 			super();
 			this.booknum = booknum;
 			this.bookname = bookname;
 			this.writer = writer;
-			this.statecode = "가능";
+			this.statecode = 1;
 					
 		}		
 		
-		public String getStatecode() {
+		public int getStatecode() {
 			return statecode;
 		}
 
 
-		public void setStatecode(String statecode) {
+		public void setStatecode(int statecode) {
 			this.statecode = statecode;
 			
 		}
@@ -52,6 +52,6 @@ public class Book {
 		
 		public void rent() {
 			
-			this.statecode = "불가능";
+			this.statecode = 0;
 			}
 }
