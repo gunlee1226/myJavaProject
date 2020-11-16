@@ -41,5 +41,8 @@ public class Friend {
 		this.hp = hpp;
 		this.school = sch;
 	}
+	public void showinfo() {
+		System.out.println("이름 " + name + "핸폰" + hp + "학교" + school);
+	}
 
 }
