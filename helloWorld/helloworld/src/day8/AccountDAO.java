@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAO {
-
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {
@@ -186,29 +185,47 @@ public class AccountDAO {
 		
 		return current;
 	}
+
+	public List<AccountVO> fordate(String date1) {
+		
 	
-	public String fordate(){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String adate = "null";
+		ResultSet rs = null;		
+		List<AccountVO> Adate = new ArrayList<>();
 		
 		try {
 			conn = getConnection();
-
-			String query = "SELECT \r\n"
-					+ "*\r\n"
-					+ "FROM  account\r\n"
-					+ "WHERE tr_date > To_date('?') and  tr_date<= to_date('?')";
+		
+			String query = "SELECT account_id, deposit, withdraw, to_char(tr_date ,'YYYYMMDD'),  balance \r\n"
+					+ "FROM  account WHERE to_char(tr_date, 'YYYYMMDD') =?";
 			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, date1);
 			rs = pstmt.executeQuery();
-
+	
+			
+			
+			
 			while (rs.next()) {
 				AccountVO vo = new AccountVO();
-				adate = rs.getString(1);
-				adate = rs.getString(2);
-								
-				}
+				int account_id = rs.getInt(1);
+				int deposit = rs.getInt(2);
+				int withdraw = rs.getInt(3);
+				String tr_date = rs.getString(4);
+				int balance = rs.getInt(5);
+				
+				vo.setAccount_id(account_id);
+				vo.setDeposit(deposit);
+				vo.setWithdraw(withdraw);
+				vo.setTr_date(tr_date);
+				vo.setBalance(balance);
+				
+				Adate.add(vo);
+			}
+			
+			
+			
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
@@ -229,6 +246,8 @@ public class AccountDAO {
 			}
 		}
 		
-		return adate;
+		return Adate;
 	}
+	
+	
 }

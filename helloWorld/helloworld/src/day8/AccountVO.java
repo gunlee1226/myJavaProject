@@ -58,11 +58,12 @@ public class AccountVO {
 	  @Override
 	  public String toString() {
 	    return "AccountVO [id=" + account_id + ", 입금액: " + deposit + ", 출금액: " + withdraw + ", 날짜=" + tr_date + ", 계좌 총액 : "
-	        + balance + "]";
+	        + balance + "]" + "\n";
 	  }
 
 	public AccountVO() {
 		
 	}
+
 
 }

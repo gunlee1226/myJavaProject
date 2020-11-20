@@ -11,9 +11,9 @@ public class AccountMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input;
-		
+
 		boolean tf = true;
-		
+
 		AccountVO vo = new AccountVO();
 		while (tf) {
 
@@ -32,6 +32,7 @@ public class AccountMain {
 				dao.depositAccount(vo);
 				printAccount();
 				break;
+
 			case 2:
 				System.out.print("출금액>");
 				input = sc.nextInt();
@@ -40,30 +41,33 @@ public class AccountMain {
 				printAccount();
 				break;
 			case 3:
+
 				System.out.print("잔고액>");
-			System.out.println(dao.getBalance());	
+				System.out.println(dao.getBalance());
 				break;
+
 			case 4:
-				System.out.println("기간조회 입력 두개");
+				System.out.println("기간조회");
 				input = sc.nextInt();
-				input = sc.nextInt();
-				System.out.println(dao.fordate());
+				vo.setTr_date(Integer.toString(input));
+
+				
+				System.out.println(dao.fordate(vo.getTr_date()));
 				break;
+				
 			case 5:
 				System.out.println("*****프로그램을 종료합니다.*****");
 				tf = false;
 				break;
 
-			default :
-                System.out.println("다시입력해주세요");
-                break;
+			default:
+				System.out.println("다시입력해주세요");
+				break;
 			}
-				
+
 		}
 
 	}
-
-	
 
 	public static void printAccount() {
 		System.out.println("*****통장 거래내역 출력 (시작)  *****");
@@ -76,6 +80,5 @@ public class AccountMain {
 
 		System.out.println("*****통장 거래내역 출력 (끝)  *****");
 	}
-	
 
 }
