@@ -24,7 +24,7 @@ public class GuestBookDAO {
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			conn = DriverManager.getConnection(url, "gunlee", "0000");
 			
-			String query ="insert into emaillist values (seq_guest_no.nextval, ?, ?, ?)";
+			String query ="insert into guestbook values (seq_guest_no.nextval, ?,?,?,sysdate)";
 			pstmt = conn.prepareStatement(query);	
 			
 			pstmt.setString(1, vo.getName());
@@ -62,10 +62,11 @@ public class GuestBookDAO {
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			conn = DriverManager.getConnection(url, "gunlee", "0000");
 			
-			String query ="delete guestbook where no = ?";
+			String query ="delete guestbook where password =?";
 			pstmt = conn.prepareStatement(query);	
 			
 			pstmt.setInt(1, Integer.parseInt(no));
+	
 
 			count = pstmt.executeUpdate();
 			

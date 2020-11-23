@@ -5,9 +5,11 @@
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String no = request.getParameter("no");
+
 	
 	
 	out.println(no);
+
 	
 	GuestBookVO vo = new GuestBookVO();
 	GuestBookDAO dao = new GuestBookDAO();

@@ -14,7 +14,7 @@
 	</p>
 	<form action="guestinsert.jsp" method="post">
 		name(이름): <input type="text" name="in" value=""><br>
-		password(비밀번호): <input type="text" name="ip" value=""><br>
+		password(비밀번호): <input type="password" name="ip" value=""><br>
 		contents(내용): <input type="text" name="ic" value=""><br>
 		<input type="submit" value="등록">
 	</form>
@@ -23,7 +23,8 @@
 	<br>
 	
 		<form action="guestdelete.jsp" method="post">
-		회원번호: <input type="text" name="no" value=""><br>
+
+		삭제하고 싶은 비밀번호: <input type="text" name="no" value=""><br>
 				<input type="submit" value="삭제">
 	</form>
 	<p>
