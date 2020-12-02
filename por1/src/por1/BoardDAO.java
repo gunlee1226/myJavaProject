@@ -123,8 +123,6 @@ public class BoardDAO {
 				list.add(vo);
 				
 			}
-			
-			
 		} catch (ClassNotFoundException e) {
 			System.out.println("error: 드라이버 로딩 실패 - " + e);
 		} catch (SQLException e) {
