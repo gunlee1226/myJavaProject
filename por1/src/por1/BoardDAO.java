@@ -121,6 +121,7 @@ public class BoardDAO {
 				BoardVO vo = new BoardVO(b_no, "b_title", "b_date", b_view, b_commview, "b_contents", "b_comment");
 				
 				list.add(vo);
+			
 				
 			}
 		} catch (ClassNotFoundException e) {
