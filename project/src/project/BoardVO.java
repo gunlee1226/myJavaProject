@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardVO {
-		   
+
    private int b_no;
    private String b_title;
    private String b_date;
@@ -12,27 +12,34 @@ public class BoardVO {
    private int b_view;
    private int b_commview;
    private String b_comment;
-   private String MEM_CODE;
-   
+   private String MEM_NAME;
 
 
+   public BoardVO() {}
    
-   public BoardVO(int b_no, String b_title, String b_date, int b_view, int b_commview, String MEM_CODE) {
+   public BoardVO(String input_title, String input_contents) {
+	   super();
+	   this.b_contents = input_contents;
+	   this.b_title = input_title;
+   }
+
+   public BoardVO(int b_no, String b_title, String b_date, int b_view, int b_commview, String MEM_NAME) {
       super();
       this.b_no = b_no;
       this.b_title = b_title;
       this.b_date = b_date;
       this.b_view = b_view;
       this.b_commview = b_commview;
-      this.MEM_CODE = MEM_CODE;
+      this.MEM_NAME = MEM_NAME;
+    
    }
-   
 
-public String getMEM_CODE() {
-	return MEM_CODE;
-}
-	public void setMEM_CODE(String MEM_CODE) {
-		this.MEM_CODE = MEM_CODE;
+
+   public String getMEM_NAME() {
+	return MEM_NAME;
+   }
+	public void setMEM_NAME(String MEM_NAME) {
+		this.MEM_NAME = MEM_NAME;
 	}
 
 
@@ -124,4 +131,4 @@ public int getB_no() {
    public String toString() {
       return "BoardVO "+"b_no"+"b_title" + "b_date"+"b_contents"+"b_view"+"b_commview"+"b_comment" + "\n";
    }
-}
+} 

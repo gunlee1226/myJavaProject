@@ -8,10 +8,8 @@
 
 <%
    request.setCharacterEncoding("UTF-8");
-
 BoardDAO dao = new BoardDAO();
 List<BoardVO> list = dao.getList();
-
 %>
 
 
@@ -20,7 +18,6 @@ List<BoardVO> list = dao.getList();
 <html lang="ko">
 <style>
 @import url("css/recs.css");
-
 </style>
 
 <head>
@@ -56,8 +53,11 @@ List<BoardVO> list = dao.getList();
 				</li>
 				<li class="nav-item"><a class="nav-link" href="????.html">로그인</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="freeboard.html">자유게시판</a>
+				<form action="BoardMain.jsp" method="post">
+				<li class="nav-item"><a class="nav-link" >
+				<input type ="submit" value="자게">자유게시판</a>
 				</li>
+				</form>
 			</ul>
 		</div>
 	</nav>
@@ -65,7 +65,6 @@ List<BoardVO> list = dao.getList();
 	<a class="nav-link" href="main.html">
 		<h1 class="head">오늘 뭐 먹지 ?</h1>
 	</a>
-
 
 
 	<!-- 메인 내용 -->
@@ -82,22 +81,21 @@ List<BoardVO> list = dao.getList();
 							<th scope="col">작성자</th>
 							<th scope="col">제목</th>
 							<th scope="col">날짜</th>
-							
+
 							<th scope="col">조회수</th>
 							<th scope="col">댓글수</th>
 						</tr>
 					</thead>
-					
+
 					<tbody>
 					<% 
       for(BoardVO vo : list) {
    %>	
 						<tr>
 							<td><%=vo.getB_no() %> </td>
-							<td><%=vo.getMEM_CODE() %></td>
+							<td><%=vo.getMEM_NAME() %></td>
 							<td><%=vo.getB_title() %></td>
 							<td><%=vo.getB_date() %></td>
-							
 							<td><%=vo.getB_view() %></td>
 							<td><%=vo.getB_commview() %></td>
 
@@ -105,8 +103,7 @@ List<BoardVO> list = dao.getList();
 	<%      
       }					
    %>
-  
-   
+
 					</tbody>
 
 				</table>
@@ -118,7 +115,7 @@ List<BoardVO> list = dao.getList();
 		<div class="row">
 			<div class="col-md-12" style="text-align: right;">
 				<form action="InsertBoard.jsp" method="POST">
-					<input type="button" name="binsert" value="글쓰기">
+					<input type="submit" name="binsert" value="글쓰기">
 				</form>
 			</div>
 		</div>
@@ -133,5 +130,4 @@ List<BoardVO> list = dao.getList();
 
 </html>
 <script>
-
-</script>
+</script> 

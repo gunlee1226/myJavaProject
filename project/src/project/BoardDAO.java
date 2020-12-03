@@ -12,29 +12,27 @@ import sun.awt.CharsetString;
 
 public class BoardDAO {
 
-   public int insert(BoardVO vo) {
+   public int insert(BoardVO vo, String input_title, String input_contents) {
       Connection conn = null;
       PreparedStatement pstmt = null;
       int count = 0 ;
-      
+
       try {
          Class.forName("oracle.jdbc.driver.OracleDriver");
-         
-         String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+         String url = "jdbc:oracle:thin:@localhost:1521:xe";
          conn = DriverManager.getConnection(url, "gunlee", "0000");
-         
-         String query ="insert into board values (B_NO_SEQ.nextval,?,sysdate,0,0,?,?,20004)";
+
+         String query ="INSERT INTO board values(board_no_SEQ.nextval,?, sysdate,?,1, 1, 2 )";
          pstmt = conn.prepareStatement(query);   
-         
-         pstmt.setString(1, vo.getB_title());
-         pstmt.setString(2, vo.getB_contents());
-         pstmt.setString(3, vo.getB_comment());
-         
-      
+
+         pstmt.setString(1, input_title);
+         pstmt.setString(2, input_contents);
+       
          count = pstmt.executeUpdate();
-         
+
          System.out.println(count + "건 등록");
-         
+
       } catch (ClassNotFoundException e) {
          System.out.println("error: 드라이버 로딩 실패 - " + e);
       } catch (SQLException e) {
@@ -49,7 +47,7 @@ public class BoardDAO {
       }
       return count;
    }
-   
+
    /*
    public void delete(String no) {
       Connection conn = null;
@@ -66,7 +64,6 @@ public class BoardDAO {
          pstmt = conn.prepareStatement(query);   
          pstmt.setString(1, no);
             
-
          count = pstmt.executeUpdate();
          
          System.out.println(count + "건 삭제");
@@ -98,30 +95,35 @@ public class BoardDAO {
       try {
          // 1. JDBC 드라이버 (Oracle) 로딩
          Class.forName("oracle.jdbc.driver.OracleDriver");
-         
+
          // 2. Connection 얻어오기
-         String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+         String url = "jdbc:oracle:thin:@localhost:1521:xe";
          conn = DriverManager.getConnection(url, "gunlee", "0000");
-         
+
          // 3. SQL문 준비 / 바인딩 / 실행
-         String query = "select b_no, b_date, MEM_CODE,b_title, b_view, b_commview from board order by b_no asc";
+         String query = "SELECT b.b_no, b.b_title, b.b_date, b.b_view, b.b_commview , dm.MEM_NAME "
+         		+ "from board b Inner join D_MEMBER dm "
+         		+ "ON b.MEM_CODE = dm.MEM_CODE order by b.b_no ASC";
          pstmt = conn.prepareStatement(query);   
          rs = pstmt.executeQuery();
          // 4.결과처리
          while(rs.next()) {
-              
-        	int b_no = rs.getInt("b_no");
-            String b_title = rs.getString("b_title");
-            String b_date = rs.getString("b_date");
-            int b_view = rs.getInt("b_view");
-            int b_commview = rs.getInt("b_commview");
-            String MEM_CODE = rs.getString("MEM_CODE");
+        	 
 
-         
-            BoardVO vo = new BoardVO(b_no, b_title, b_date, b_view, b_commview, MEM_CODE);
-          
-            list.add(vo);
+        	int b_no = rs.getInt(1);
+            String b_title = rs.getString(2);
+            String b_date = rs.getString(3);
+            int b_view = rs.getInt(4);
+            int b_commview = rs.getInt(5);
+            String MEM_NAME = rs.getString(6);
            
+               
+
+
+            BoardVO vo = new BoardVO(b_no, b_title, b_date, b_view, b_commview, MEM_NAME);
+
+            list.add(vo);
+
          }
       } catch (ClassNotFoundException e) {
          System.out.println("error: 드라이버 로딩 실패 - " + e);
@@ -143,7 +145,7 @@ public class BoardDAO {
       }
 
       return list;
-      
+
    }
 
-}
+} 
